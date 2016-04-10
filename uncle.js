@@ -83,7 +83,7 @@ window.uncle = (function() {
       el.parentNode.replaceChild(new_el, el);
       el = new_el;
     } else if (btype !== 'object' && b !== a) {
-      el.textContent = b;
+      el.textContent === undefined ? el.innerText = b : el.textContent = b;
     } else if (btype === 'object') {
       // same tags
       a = normalize(a);
@@ -146,7 +146,7 @@ window.uncle = (function() {
       if (n) el.removeChild(n);
     });
     for (i in insert) {
-      el.insertBefore(insert[i], el.childNodes[i]);
+      el.insertBefore(insert[i], el.childNodes[i] || null);
     }
   }
   
